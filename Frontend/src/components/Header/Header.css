@@ -1,14 +1,14 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     min-height: 100vh;
-
 }
-a{
+
+a {
     text-decoration: none;
     color: inherit;
 }
@@ -16,41 +16,37 @@ a{
 .header {
     display: flex;
     align-items: center;
-    justify-content:flex-start;
+    justify-content: flex-start;
     height: 34vw;
     width: 85vw;
-    margin: auto ;
+    margin: auto;
     background: url('../../assets/frontend_assets/header_img.png') no-repeat center;
-    background-size: cover; /* Change to cover for full area coverage */
+    background-size: cover;
     position: relative;
-    border-radius: 20px; /* Add rounded corners */
-    overflow: hidden; /* Prevent content from going outside */
+    border-radius: 20px;
+    overflow: hidden;
     padding-left: 50px;
     padding-top: 80px;
     margin-top: 65px;
-    
 }
 
 .header-contents {
-
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align text to the left */
+    align-items: flex-start;
     gap: 1.5vw;
-    max-width: 40%; /* Adjust width for better alignment */
-    bottom: 15%; /* Adjust positioning to match design */
-    left: 6vw; /* Distance from the left edge */
+    max-width: 40%;
     animation: fadeIn 3s;
 }
 
 .header-contents p {
     color: white;
-    font-size: 1.2vw; /* Slightly larger font */
-    line-height: 1.6; /* Better readability */
+    font-size: 1.2vw;
+    line-height: 1.6;
 }
 
 .header-contents h2 {
-    font-weight: 600; /* Make the text slightly bolder */
+    font-weight: 600;
     color: white;
     font-size: max(3vw, 22px);
     line-height: 1.2;
@@ -60,7 +56,7 @@ a{
     border: none;
     color: #747474;
     font-weight: 500;
-    padding: 0.8vw 2vw; /* Adjust padding for a tighter look */
+    padding: 0.8vw 2vw;
     background-color: white;
     border-radius: 50px;
     font-size: max(1vw, 13px);
@@ -69,16 +65,71 @@ a{
 }
 
 .header-contents button:hover {
-    background-color: #f04e23; /* Add hover effect */
+    background-color: #f04e23;
     color: white;
 }
 
 @keyframes fadeIn {
-    0%{
+    0% {
         opacity: 0;
     }
-    100%{
+    100% {
         opacity: 1;
     }
 }
 
+/* Tablet devices */
+@media (max-width: 1050px) {
+    .header {
+        height: 38vw;
+    }
+    .header-contents {
+        max-width: 45%;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 750px) {
+    .header {
+        height: 50vw; /* Adjusted for smaller screens */
+        padding-left: 30px;
+        padding-top: 60px;
+    }
+    .header-contents {
+        max-width: 55%;
+        gap: 2vw;
+    }
+    .header-contents p {
+        display: none; /* Hide paragraph text for smaller screens */
+    }
+    .header-contents h2 {
+        font-size: max(4vw, 18px); /* Adjusted for better visibility */
+    }
+    .header-contents button {
+        padding: 2vw 4vw;
+        font-size: max(2vw, 12px);
+    }
+}
+
+/* Pixel 7 (viewport width ~412px) */
+@media (max-width: 412px) {
+    .header {
+        width: 90%; /* Reduced width for smaller screens */
+        height: 60vw; /* Increased height for better proportions */
+        padding-left: 20px;
+        padding-top: 40px;
+        margin-top: 20px; /* Reduced top margin */
+    }
+    .header-contents {
+        max-width: 70%;
+        gap: 3vw;
+    }
+    .header-contents h2 {
+        font-size: max(5vw, 16px); /* Smaller font size */
+        line-height: 1.3;
+    }
+    .header-contents button {
+        padding: 3vw 5vw;
+        font-size: max(2.5vw, 11px); /* Reduced button size */
+    }
+}

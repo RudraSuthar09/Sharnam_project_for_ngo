@@ -9,7 +9,7 @@ const Navbar = () => {
             <img src={assets.logo} alt="Logo" className="logo" />
             <ul className="navbar-menu">
                 <li className={menu === "home" ? "active" : ""} onClick={() => setMenu("home")}>Home</li>
-                <li className={menu === "menu" ? "active" : ""} onClick={() => setMenu("menu")}>Products</li>
+                <li  className={menu === "menu" ? "active" : ""} onClick={() => setMenu("menu")}>Products</li>
                 <li className={menu === "Contact-us" ? "active" : ""} onClick={() => setMenu("Contact-us")}>Contact</li>
             </ul>
             <div className="navbar-right">
