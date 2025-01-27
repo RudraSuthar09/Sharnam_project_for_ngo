@@ -1,8 +1,8 @@
-* {
+/* * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
+} */
 
 body {
     min-height: 100vh;
@@ -18,7 +18,7 @@ a {
     align-items: center;
     justify-content: flex-start;
     height: 34vw;
-    width: 85vw;
+    /* width: 85vw; */
     margin: auto;
     background: url('../../assets/frontend_assets/header_img.png') no-repeat center;
     background-size: cover;
