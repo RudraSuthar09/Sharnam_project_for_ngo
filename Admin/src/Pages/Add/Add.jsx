@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Add.css';
 import { assets } from '../../assets/assets';
 import axios from 'axios';
+import { toast } from 'react-toastify'; // Import toast from react-toastify
 
 const Add = () => {
     const url = "http://localhost:4000";
@@ -25,7 +26,7 @@ const Add = () => {
         event.preventDefault();
 
         if (!image) {
-            alert("Please select an image.");
+            toast.error("Please select an image."); // Show error toast if no image is selected
             return;
         }
 
@@ -38,9 +39,9 @@ const Add = () => {
 
         try {
             const response = await axios.post(`${url}/api/food/add`, formData);
-            console.log(response.data); // Log to verify API response
+            console.log(response.data); // Log the full response data for debugging
 
-            if (response.data.success) {
+            if (response.data.success) { // Check for success key in the response
                 setData({
                     name: "",
                     description: "",
@@ -48,12 +49,13 @@ const Add = () => {
                     category: "Salad"
                 });
                 setImage(null); // Reset image after successful upload
+                toast.success(response.data.message); // Success toast
             } else {
-                alert("Failed to add food item");
+                toast.error("Failed to add food item."); // Error toast if success is false
             }
         } catch (error) {
             console.error("Error uploading data:", error);
-            alert("An error occurred while uploading the food item.");
+            toast.error("An error occurred while uploading the food item."); // General error toast
         }
     };
 
@@ -69,7 +71,7 @@ const Add = () => {
                 </div>
                 <div className="add-product-name flex-col">
                     <p>Product name</p>
-                    <input onChange={onChangeHandler} value={data.name} type="text" name="name" id="" placeholder='type here' />
+                    <input onChange={onChangeHandler} value={data.name} type="text" name="name" placeholder='Type here' />
                 </div>
                 <div className="add-product-description flex-col">
                     <p>Product Description</p>
