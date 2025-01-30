@@ -10,7 +10,7 @@ const storage=multer.diskStorage({
     filename:(req,file,cb)=>{
         return cb(null,`${Date.now()}${file.originalname}`)
     }
-})
+}) 
 const upload = multer({storage:storage})
 foodRouter.post("/add",upload.single("image"),addFood)
 foodRouter.get("/list",listFood)

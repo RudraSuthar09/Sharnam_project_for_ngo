@@ -1,0 +1,9 @@
+POST http://localhost:4000/api/food/add
+Content-Type: application/json
+
+{
+    "name": "Happy Paws Clinic",
+    "description": "New York",
+    "price": "123-456-7890",
+    "category":"salad"
+}

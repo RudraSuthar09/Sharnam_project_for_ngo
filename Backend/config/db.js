@@ -1,10 +1,19 @@
 import dotenv from "dotenv";
-dotenv.config()
-import express from "express"
-import cors from "cors"
+dotenv.config();
+
 import mongoose from "mongoose";
 
-export const connectDB =async()=>{
-    await mongoose.connect('mongodb+srv://sutharrudra9390:rudra9390@cluster0.vznyu.mongodb.net/Sharnam/').then(()=>console.log("DB connected"));
-}
-// mongoose.connect(process.env.MONGO_URI)
+console.log("🔍 MONGO_URI from .env:", process.env.MONGO_URI); // Debugging
+
+export const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+        console.log("✅ MongoDB Connected Successfully");
+    } catch (error) {
+        console.error("❌ MongoDB Connection Error:", error);
+        process.exit(1);
+    }
+};
