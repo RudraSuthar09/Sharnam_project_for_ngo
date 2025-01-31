@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import './Add.css';
 import { assets } from '../../assets/assets';
 import axios from 'axios';
-import { toast } from 'react-toastify'; // Import toast from react-toastify
+import { toast } from 'react-toastify';
 
-const Add = () => {
-    const url = "http://localhost:4000";
+const Add = ({url}) => {
+
     const [image, setImage] = useState(null);
     const [data, setData] = useState({
         name: "",
@@ -26,7 +26,7 @@ const Add = () => {
         event.preventDefault();
 
         if (!image) {
-            toast.error("Please select an image."); // Show error toast if no image is selected
+            toast.error("Please select an image.");
             return;
         }
 
@@ -39,23 +39,23 @@ const Add = () => {
 
         try {
             const response = await axios.post(`${url}/api/food/add`, formData);
-            console.log(response.data); // Log the full response data for debugging
+            console.log("Response Data:", response.data);
 
-            if (response.data.success) { // Check for success key in the response
+            if (response.data && response.data.success === true) { // FIXED CONDITION
                 setData({
                     name: "",
                     description: "",
                     price: "",
                     category: "Salad"
                 });
-                setImage(null); // Reset image after successful upload
-                toast.success(response.data.message); // Success toast
+                setImage(null);
+                toast.success(response.data.message || "Food item added successfully!");
             } else {
-                toast.error("Failed to add food item."); // Error toast if success is false
+                toast.error(response.data.message || "Failed to add food item.");
             }
         } catch (error) {
             console.error("Error uploading data:", error);
-            toast.error("An error occurred while uploading the food item."); // General error toast
+            toast.error("An error occurred while uploading the food item.");
         }
     };
 
@@ -81,7 +81,7 @@ const Add = () => {
                 <div className="add-category-price">
                     <div className="add-category flex-col">
                         <p>Product Category</p>
-                        <select name="category" onChange={onChangeHandler}>
+                        <select name="category" onChange={onChangeHandler} value={data.category}>
                             <option value="Salad">Salad</option>
                             <option value="Rolls">Rolls</option>
                             <option value="Deserts">Deserts</option>
