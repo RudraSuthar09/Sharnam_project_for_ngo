@@ -44,8 +44,8 @@ const StoreContextProvider = (props) => {
     removeFromCart,
     getTotalCartAmount,
     url,
-    token, // ✅ Added token here
-    setToken, // ✅ Ensures Navbar can update token
+    token, 
+    setToken, 
   };
 
   return (
