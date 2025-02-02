@@ -31,12 +31,16 @@ const StoreContextProvider = (props) => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let itemInfo = food_list.find((product) => product.id === item);
-        totalAmount += itemInfo.price * cartItems[item];
+        // Adjust the property name to match your food_list items
+        let itemInfo = food_list.find((product) => product._id === item);
+        if (itemInfo) {
+          totalAmount += itemInfo.price * cartItems[item];
+        }
       }
     }
     return totalAmount;
   };
+  
 
   const fetchFoodList= async()=>{
     const response= await axios.get(url+"/api/food/list");
@@ -44,17 +48,17 @@ const StoreContextProvider = (props) => {
     
   }
 
-  useEffect(()=>{
-  
-    async function loadData(){
-      await fetchFoodList()
-      if(localStorage.getItem("token")){
+  useEffect(() => {
+    async function loadData() {
+      await fetchFoodList();
+      if (localStorage.getItem("token")) {
         setToken(localStorage.getItem("token"));
       }
-
+      console.log(food_list); // Check the data structure here
     }
     loadData();
-  },[])
+  }, []);
+  
 
   const contextValue = {
     food_list,
