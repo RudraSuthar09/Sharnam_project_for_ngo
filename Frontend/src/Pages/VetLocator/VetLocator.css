@@ -1,0 +1,179 @@
+/* Ensure the container spans the full viewport */
+.vet-locator-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Style the sidebar on the right */
+.sidebar {
+    width: 350px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    backdrop-filter: blur(15px); /* Stronger blur effect */
+    padding: 25px;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-shadow: -3px 0 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    animation: slideInRight 0.7s ease-in-out; /* Slightly slower slide-in animation */
+    overflow-y: auto; /* Allow the sidebar to scroll if needed */
+}
+
+/* Title styling */
+.sidebar h1 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #2c3e50;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+}
+
+/* Search bar styles */
+.search-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    transition: box-shadow 0.3s ease-in-out;
+    color: #333;
+    font-family: "Arial", sans-serif;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent */
+}
+
+.search-bar input:focus {
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.6); /* Green glow */
+}
+
+.search-bar button {
+    padding: 12px 18px;
+    background-color: transparent;
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+}
+
+.search-bar button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* List of nearby hospitals */
+.nearby-list {
+    margin-top: 20px;
+    width: 100%;
+    flex: 1; /* Allow it to grow */
+    overflow-y: auto; /* Scrollable list */
+    padding-right: 5px;
+    max-height: calc(100vh - 200px); /* Allow the list to scroll without going off the screen */
+}
+
+.nearby-list h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.nearby-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nearby-list li {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    font-size: 1rem;
+    font-family: "Arial", sans-serif;
+    color: #444;
+    animation: fadeInFromCenter 1.2s ease-in-out; /* Slower animation from the center */
+    transition: transform 0.3s ease-in-out;
+}
+
+.nearby-list li:hover {
+    transform: scale(1.05); /* Slight scaling on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Emphasized shadow on hover */
+}
+
+/* Back to home button */
+.home-button {
+    padding: 12px 18px;
+    background-color: transparent;
+    border: 2px solid #007BFF;
+    color: #007BFF;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    width: 100%;
+    margin-top: auto; /* Push button to the bottom */
+}
+
+.home-button:hover {
+    background-color: #007BFF;
+    color: white;
+}
+
+/* Animation for sidebar slide-in */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Animation for list items to fade in from the center */
+@keyframes fadeInFromCenter {
+    from {
+        opacity: 0;
+        transform: translateY(0) scale(0.5); /* Start from center with a small scale */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1); /* Expand to full size */
+    }
+}
+
+/* Map container styles */
+.map-container {
+    flex: 1;
+    height: 100%;
+    z-index: 0; /* Ensure the map appears behind the sidebar */
+}
