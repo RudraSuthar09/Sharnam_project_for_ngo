@@ -30,6 +30,26 @@
     font: 18px;
 }
 
+.navbar-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sharanam-text {
+    text-decoration: none;
+    color: #4CAF50;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.sharanam-text:hover {
+    color: #2E7D32;
+}
+
+
 .navbar-right{
     display: flex;
     align-items: center;
