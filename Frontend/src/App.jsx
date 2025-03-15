@@ -30,11 +30,22 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/cart" element={<Cart />} />
-                <Route path="/order" element={<PlaceOrder />} />
               </Routes>
               <Footer />
             </div>
           }
+        />
+
+        {/* 🔥 Fix: Make "/order" a Global Route with Navbar/Footer */}
+        <Route 
+          path="/order" 
+          element={
+            <div className="app">
+              <Navbar setShowLogin={setShowLogin} />
+              <PlaceOrder />
+              <Footer />
+            </div>
+          } 
         />
 
         {/* 🏥 VetLocator Page (No Navbar/Footer) */}
