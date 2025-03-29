@@ -1,6 +1,24 @@
 @import './tailwind.css';
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+/* Tailwind CSS styles for underline animation */
+.hover-underline-animation {
+  position: relative;
+}
 
+.hover-underline-animation::before {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #ce08b3;
+  transition: width 0.5s;
+}
+
+.hover-underline-animation:hover::before {
+  width: 100%;
+}
 *{
   padding: 0;
   margin: 0;

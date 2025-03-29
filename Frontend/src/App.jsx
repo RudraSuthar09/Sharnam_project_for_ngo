@@ -6,7 +6,7 @@ import Home from './Pages/Home/Home';
 import Cart from './Pages/Cart/Cart';
 import PlaceOrder from './Pages/PlaceOrder/PlaceOrder';
 import VetLocator from './Pages/VetLocator/VetLocator';
-import MainHomePage from './Pages/Home/MainHomePage';
+import MainHomePage from './Pages/Home/MainHomePage.jsx';
 import { LoginPopup } from './components/LoginPopup/LoginPopup';
 
 const App = () => {

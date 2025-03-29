@@ -1,31 +1,89 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import MainNavbar from "../../components/MainNavbar";
 
+import Footer from "../../components/Footer";
+import "./MainHomepage.js";  // Import JavaScript functions
 
 const MainHomePage = () => {
-  const navigate = useNavigate();
-
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-3xl font-bold mb-8">Welcome to Our NGO Website</h1>
-      <div className="flex gap-6">
-        {/* Vet Locator Button */}
-        <button
-          onClick={() => navigate("/vetlocator")}
-          className="px-6 py-3 text-lg font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 transition-all"
-        >
-          Vet Locator
-        </button>
+    <>
+      <MainNavbar />
+      <div className="main1 flex flex-col items-center justify-center h-screen bg-cover bg-center bg-yellow-500 py-10">
+        <h1 className="text-white text-6xl font-serif font-light text-center shadow-lg">WELCOME TO SHARANAM</h1>
+        <h2 className="text-white text-3xl font-yatra mt-4 shadow-lg">आश्रयः सर्वेषाम्</h2>
+      </div>
 
-        {/* Shopping Page Button */}
-        <button
-          onClick={() => navigate("/shopping")}
-          className="px-6 py-3 text-lg font-semibold text-white bg-green-500 rounded-lg shadow-md hover:bg-green-600 transition-all"
-        >
-          Shopping
+      <div className="main2 h-screen bg-antiquewhite"></div>
+
+      <div className="main4 flex justify-evenly items-center h-screen bg-yellow-400 relative">
+        <div className="boxes grid grid-flow-col auto-cols-fr gap-10 overflow-hidden w-full mx-auto bg-yellow-400 p-4 rounded-lg shadow-lg">
+          <div className="box bg-white border border-gray-200 rounded-lg shadow-lg p-4">
+            <div className="box_img bg-gray-200 w-full h-64"></div>
+            <h3 className="text-2xl pt-4">Fresh & Clean: Dog Bathing</h3>
+            <p className="text-lg text-gray-700 py-2">
+              Give your furry friend the ultimate care they deserve. Join Sharnam in promoting healthy habits by donating or volunteering. Every bit helps our four-legged pals!
+            </p>
+            <div className="Read_More text-left pt-4">
+              <a href="#" className="text-blue-500">Read More</a>
+            </div>
+          </div>
+
+          <div className="box bg-white border border-gray-200 rounded-lg shadow-lg p-4">
+            <div className="box_img bg-gray-200 w-full h-64"></div>
+            <h3 className="text-2xl pt-4">Nourish Our Cats!</h3>
+            <p className="text-lg text-gray-700 py-2">
+              Keep our feline friends happy and healthy with nutritious meals. Every meal makes a difference in their well-being. Join us in providing the best care for our cats. Make every kitty smile!
+            </p>
+            <div className="Read_More text-left pt-4">
+              <a href="#" className="text-blue-500">Read More</a>
+            </div>
+          </div>
+
+          <div className="box bg-white border border-gray-200 rounded-lg shadow-lg p-4">
+            <div className="box_img bg-gray-200 w-full h-64"></div>
+            <h3 className="text-2xl pt-4">Cherish Our Cows!</h3>
+            <p className="text-lg text-gray-700 py-2">
+              Nurture these gentle giants with acts of kindness and care. Ensure they thrive and flourish with our efforts. Stand tall for our beloved cows and make a lasting impact!
+            </p>
+            <div className="Read_More text-left pt-4">
+              <a href="#" className="text-blue-500">Read More</a>
+            </div>
+          </div>
+
+          <div className="box bg-white border border-gray-200 rounded-lg shadow-lg p-4">
+            <div className="box_img bg-gray-200 w-full h-64"></div>
+            <h3 className="text-2xl pt-4">Save Birds!</h3>
+            <p className="text-lg text-gray-700 py-2">
+              Our feathered friends need your help. Every action counts towards protecting their habitats and ensuring their survival. Join the mission and make a difference for our winged companions. Fly high with us in this cause!
+            </p>
+            <div className="Read_More text-left pt-4">
+              <a href="#" className="text-blue-500">Read More</a>
+            </div>
+          </div>
+
+          <div className="box bg-white border border-gray-200 rounded-lg shadow-lg p-4">
+            <div className="box_img bg-gray-200 w-full h-64"></div>
+            <h3 className="text-2xl pt-4">Care for Elephants!</h3>
+            <p className="text-lg text-gray-700 py-2">
+              These majestic giants need your love and protection. Every gesture ensures their well-being and preserves their grandeur. Stand tall with us and make a real difference for our elephants!
+            </p>
+            <div className="Read_More text-left pt-4">
+              <a href="#" className="text-blue-500">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <button className="left-btn absolute left-0 top-1/2 transform -translate-y-1/2" onClick={goPrev}>
+          <img src="left-arrow.png" alt="Previous" className="h-15 w-auto" />
+        </button>
+        <button className="right-btn absolute right-0 top-1/2 transform -translate-y-1/2" onClick={goNext}>
+          <img src="right-arrow.png" alt="Next" className="h-15 w-auto" />
         </button>
       </div>
-    </div>
+
+      <AboutUs/>
+      <Footer />
+    </>
   );
 };
 
