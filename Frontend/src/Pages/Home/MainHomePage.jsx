@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MainNavbar from "../../components/MainNavbar";
-
 import Footer from "../../components/Footer";
-import "./MainHomepage.js";  // Import JavaScript functions
+import AboutUs from "../../components/AboutUs"; // Ensure AboutUs component is imported
+import "./MainHomepage.css";  // Use CSS for styling
 
 const MainHomePage = () => {
+  useEffect(() => {
+    const slides = document.querySelectorAll(".box");
+    let counter = 0;
+
+    slides.forEach((slide, index) => {
+      slide.style.left = `${index * 50}%`;
+    });
+
+    const goPrev = () => {
+      counter--;
+      slideBox();
+    };
+
+    const goNext = () => {
+      counter++;
+      slideBox();
+    };
+
+    const slideBox = () => {
+      slides.forEach((slide) => {
+        slide.style.transform = `translateX(-${counter * 100}%)`;
+      });
+    };
+
+    window.goPrev = goPrev; // Make goPrev accessible globally
+    window.goNext = goNext; // Make goNext accessible globally
+  }, []);
+
   return (
     <>
       <MainNavbar />
@@ -73,10 +101,10 @@ const MainHomePage = () => {
           </div>
         </div>
 
-        <button className="left-btn absolute left-0 top-1/2 transform -translate-y-1/2" onClick={goPrev}>
+        <button className="left-btn absolute left-0 top-1/2 transform -translate-y-1/2" onClick={() => window.goPrev()}>
           <img src="left-arrow.png" alt="Previous" className="h-15 w-auto" />
         </button>
-        <button className="right-btn absolute right-0 top-1/2 transform -translate-y-1/2" onClick={goNext}>
+        <button className="right-btn absolute right-0 top-1/2 transform -translate-y-1/2" onClick={() => window.goNext()}>
           <img src="right-arrow.png" alt="Next" className="h-15 w-auto" />
         </button>
       </div>

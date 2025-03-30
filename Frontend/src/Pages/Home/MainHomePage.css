@@ -1,0 +1,32 @@
+/* Add your CSS styles here */
+
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .main1 {
+    background-image: url('/path-to-your-background-image.jpg');
+  }
+  
+  .main2 {
+    /* Add your styles for main2 */
+  }
+  
+  .main4 {
+    /* Add your styles for main4 */
+  }
+  
+  .box {
+    /* Add your styles for box */
+  }
+  
+  .box_img {
+    /* Add your styles for box_img */
+  }
+  
+  .left-btn, .right-btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+  }
