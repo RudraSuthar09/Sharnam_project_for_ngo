@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import MainNavbar from "../../components/MainNavbar";
 import Footer from "../../components/Footer";
-import AboutUs from "../../components/AboutUs"; // Ensure AboutUs component is imported
-import "./MainHomepage.css";  // Use CSS for styling
+import AboutUs from "../../components/AboutUs";
+import Chatbot from "../../components/Chatbot/Chatbot"; // ✅ Import Chatbot
 
 const MainHomePage = () => {
   useEffect(() => {
@@ -29,16 +29,21 @@ const MainHomePage = () => {
       });
     };
 
-    window.goPrev = goPrev; // Make goPrev accessible globally
-    window.goNext = goNext; // Make goNext accessible globally
+    window.goPrev = goPrev;
+    window.goNext = goNext;
   }, []);
 
   return (
     <>
       <MainNavbar />
+      
       <div className="main1 flex flex-col items-center justify-center h-screen bg-cover bg-center bg-yellow-500 py-10">
-        <h1 className="text-white text-6xl font-serif font-light text-center shadow-lg">WELCOME TO SHARANAM</h1>
-        <h2 className="text-white text-3xl font-yatra mt-4 shadow-lg">आश्रयः सर्वेषाम्</h2>
+        <h1 className="text-white text-6xl font-serif font-light text-center shadow-lg">
+          WELCOME TO SHARANAM
+        </h1>
+        <h2 className="text-white text-3xl font-yatra mt-4 shadow-lg">
+          आश्रयः सर्वेषाम्
+        </h2>
       </div>
 
       <div className="main2 h-screen bg-antiquewhite"></div>
@@ -109,8 +114,11 @@ const MainHomePage = () => {
         </button>
       </div>
 
-      <AboutUs/>
+      <AboutUs />
       <Footer />
+
+      {/* ✅ Chatbot Added Here */}
+      <Chatbot />
     </>
   );
 };
