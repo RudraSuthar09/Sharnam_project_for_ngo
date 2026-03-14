@@ -8,20 +8,42 @@ import PlaceOrder from './Pages/PlaceOrder/PlaceOrder';
 import VetLocator from './Pages/VetLocator/VetLocator';
 import MainHomePage from './Pages/Home/MainHomePage.jsx';
 import { LoginPopup } from './components/LoginPopup/LoginPopup';
+import Donate from './Pages/Donate/Donate';
+import Events from './Pages/Events/Events';
+import Gallery from './Pages/Gallery/Gallery';
+import Volunteer from './Pages/Volunteer/Volunteer';
+import RescueReport from './Pages/RescueReport/RescueReport';
+import Stories from './Pages/Stories/Stories';
+import Contact from './Pages/Contact/Contact';
+import Adopt from './Pages/Adopt/Adopt';
+import About from './Pages/About/About';
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
 
   return (
     <>
-      {/* Show login popup when needed */}
       {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
 
       <Routes>
-        {/* 🚀 Main Home Page (No Navbar/Footer) */}
+        {/* Main Home Page */}
         <Route path="/" element={<MainHomePage />} />
 
-        {/* 🛍️ Shopping Pages (With Navbar/Footer) */}
+        {/* NGO Pages */}
+        <Route path="/about" element={<About />} />
+        <Route path="/donate" element={<Donate />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/volunteer" element={<Volunteer />} />
+        <Route path="/report-rescue" element={<RescueReport />} />
+        <Route path="/stories" element={<Stories />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/adopt" element={<Adopt />} />
+
+        {/* Vet Locator Page */}
+        <Route path="/vetlocator" element={<VetLocator />} />
+
+        {/* Shopping Pages (With Navbar/Footer) */}
         <Route
           path="/shopping/*"
           element={
@@ -36,20 +58,17 @@ const App = () => {
           }
         />
 
-        {/* 🔥 Fix: Make "/order" a Global Route with Navbar/Footer */}
-        <Route 
-          path="/order" 
+        {/* Order Page with Navbar/Footer */}
+        <Route
+          path="/order"
           element={
             <div className="app">
               <Navbar setShowLogin={setShowLogin} />
               <PlaceOrder />
               <Footer />
             </div>
-          } 
+          }
         />
-
-        {/* 🏥 VetLocator Page (No Navbar/Footer) */}
-        <Route path="/vetlocator" element={<VetLocator />} />
       </Routes>
     </>
   );
