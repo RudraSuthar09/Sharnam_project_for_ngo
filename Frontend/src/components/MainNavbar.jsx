@@ -27,10 +27,21 @@ const MainNavbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigation = (path) => {
-    navigate(path);
-    setSidebarOpen(false);
-  };
+const handleNavigation = (path) => {
+  // store context for chatbot
+  localStorage.setItem(
+    "chat_context",
+    JSON.stringify({
+      page: path,
+      action: "navigate",
+      source: "navbar",
+      ts: Date.now(),
+    })
+  );
+
+  navigate(path);
+  setSidebarOpen(false);
+};
 
   return (
     <>
