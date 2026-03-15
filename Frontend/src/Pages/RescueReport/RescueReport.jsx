@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MainNavbar from "../../components/MainNavbar";
 import Footer from "../../components/Footer";
+import { sendFormSubmissionEmail } from "../../utils/sendFormSubmissionEmail";
 
 const animalTypes = ["Dog", "Cat", "Bird", "Cow / Ox", "Wild Animal", "Other"];
 const injuryTypes = ["Road Accident", "Illness / Disease", "Abuse / Cruelty", "Trapped / Stuck", "Abandoned Newborn", "Other"];
@@ -34,8 +35,13 @@ const RescueReport = () => {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await sendFormSubmissionEmail({
+      email: form.reporterEmail,
+      formName: "Rescue Report Form",
+      name: form.reporterName,
+    });
     setSubmitted(true);
   };
 

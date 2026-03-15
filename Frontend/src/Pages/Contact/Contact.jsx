@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MainNavbar from "../../components/MainNavbar";
 import Footer from "../../components/Footer";
+import { sendFormSubmissionEmail } from "../../utils/sendFormSubmissionEmail";
 
 const faqs = [
   { q: "How do I report an injured animal?", a: "You can use our 'Report Rescue' page on the website or call our 24/7 helpline at +91 98765 43210. Provide the location, animal type, and condition." },
@@ -21,8 +22,13 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await sendFormSubmissionEmail({
+      email: form.email,
+      formName: "Contact Form",
+      name: form.name,
+    });
     setSubmitted(true);
   };
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MainNavbar from "../../components/MainNavbar";
 import Footer from "../../components/Footer";
+import { sendFormSubmissionEmail } from "../../utils/sendFormSubmissionEmail";
 
 const roles = [
   { id: "rescue", icon: "🚑", title: "Rescue Volunteer", desc: "Join our emergency rescue team for on-field animal rescue operations. Training provided.", commitment: "10 hrs/week", skills: "Physical fitness, driving license" },
@@ -31,8 +32,13 @@ const Volunteer = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", city: "", experience: "", motivation: "" });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await sendFormSubmissionEmail({
+      email: form.email,
+      formName: "Volunteer Form",
+      name: form.name,
+    });
     setSubmitted(true);
   };
 
