@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MainNavbar from "../../components/MainNavbar";
 import Footer from "../../components/Footer";
+import { sendFormSubmissionEmail } from "../../utils/sendFormSubmissionEmail";
 
 const events = [
   {
@@ -103,8 +104,13 @@ const Events = () => {
 
   const filtered = filter === "All" ? events : events.filter((e) => e.category === filter);
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
+    await sendFormSubmissionEmail({
+      email: form.email,
+      formName: "Event Registration Form",
+      name: form.name,
+    });
     setRegistered((prev) => [...prev, registering]);
     setRegistering(null);
     setForm({ name: "", email: "", phone: "" });

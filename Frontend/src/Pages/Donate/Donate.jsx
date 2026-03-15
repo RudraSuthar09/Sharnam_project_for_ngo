@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MainNavbar from "../../components/MainNavbar";
 import Footer from "../../components/Footer";
+import { sendFormSubmissionEmail } from "../../utils/sendFormSubmissionEmail";
 
 const donationTiers = [
   { amount: 100, label: "Supporter", icon: "🌱", perks: "Feed one animal for a day", color: "border-green-400 bg-green-50" },
@@ -29,8 +30,13 @@ const Donate = () => {
 
   const finalAmount = customAmount ? parseInt(customAmount) : selectedAmount;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await sendFormSubmissionEmail({
+      email,
+      formName: "Donation Form",
+      name: donorName,
+    });
     setSubmitted(true);
   };
 

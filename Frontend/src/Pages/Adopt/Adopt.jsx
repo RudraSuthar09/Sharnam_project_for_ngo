@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MainNavbar from "../../components/MainNavbar";
 import Footer from "../../components/Footer";
+import { sendFormSubmissionEmail } from "../../utils/sendFormSubmissionEmail";
 
 const animals = [
   { id: 1, name: "Bruno", species: "Dog", breed: "Indian Pariah", age: "3 years", gender: "Male", emoji: "🐕", status: "Available", color: "from-orange-400 to-red-500", story: "Rescued from a road accident. Loves long walks and belly rubs. Friendly with kids.", tags: ["Vaccinated", "Neutered", "House-trained"] },
@@ -37,8 +38,13 @@ const Adopt = () => {
     (gender === "All" || a.gender === gender)
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await sendFormSubmissionEmail({
+      email: form.email,
+      formName: "Adoption Form",
+      name: form.name,
+    });
     setSubmitted(true);
   };
 
