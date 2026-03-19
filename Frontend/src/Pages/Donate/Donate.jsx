@@ -30,15 +30,18 @@ const Donate = () => {
 
   const finalAmount = customAmount ? parseInt(customAmount) : selectedAmount;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await sendFormSubmissionEmail({
-      email,
-      formName: "Donation Form",
-      name: donorName,
-    });
-    setSubmitted(true);
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  await sendFormSubmissionEmail({
+    name: donorName,
+    email: email,
+    phone: "Not provided",
+    city: "Donation Form",
+  });
+
+  setSubmitted(true);
+};
 
   if (submitted) {
     return (

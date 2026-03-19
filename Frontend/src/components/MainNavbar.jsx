@@ -12,6 +12,10 @@ const navLinks = [
   { label: 'Volunteer', path: '/volunteer' },
   { label: 'Gallery', path: '/gallery' },
   { label: 'Vet Locator', path: '/vetlocator' },
+
+  // ✅ NEW: Injury Assistant page
+  { label: 'Injury Assistant', path: '/injury-assistant' },
+
   { label: 'Contact', path: '/contact' },
 ];
 
@@ -27,28 +31,41 @@ const MainNavbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-const handleNavigation = (path) => {
-  // store context for chatbot
-  localStorage.setItem(
-    "chat_context",
-    JSON.stringify({
-      page: path,
-      action: "navigate",
-      source: "navbar",
-      ts: Date.now(),
-    })
-  );
+  const handleNavigation = (path) => {
+    // store context for chatbot
+    localStorage.setItem(
+      "chat_context",
+      JSON.stringify({
+        page: path,
+        action: "navigate",
+        source: "navbar",
+        ts: Date.now(),
+      })
+    );
 
-  navigate(path);
-  setSidebarOpen(false);
-};
+    navigate(path);
+    setSidebarOpen(false);
+  };
 
   return (
     <>
-      <nav className={`sticky top-0 z-50 transition-all duration-300 border-b ${scrolled ? 'bg-white/95 backdrop-blur-lg shadow-md border-emerald-100' : 'bg-white/85 backdrop-blur-md border-transparent'} h-16 flex items-center justify-between px-4 sm:px-6`}>
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => handleNavigation('/')}>
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center text-white font-extrabold text-lg shadow">S</div>
-          <span className="text-slate-800 font-extrabold text-xl hidden sm:block tracking-tight">Sharanam</span>
+      <nav
+        className={`sticky top-0 z-50 transition-all duration-300 border-b ${
+          scrolled
+            ? 'bg-white/95 backdrop-blur-lg shadow-md border-emerald-100'
+            : 'bg-white/85 backdrop-blur-md border-transparent'
+        } h-16 flex items-center justify-between px-4 sm:px-6`}
+      >
+        <div
+          className="flex items-center gap-3 cursor-pointer"
+          onClick={() => handleNavigation('/')}
+        >
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center text-white font-extrabold text-lg shadow">
+            S
+          </div>
+          <span className="text-slate-800 font-extrabold text-xl hidden sm:block tracking-tight">
+            Sharanam
+          </span>
         </div>
 
         <ul className="hidden xl:flex items-center gap-1 text-slate-700 text-sm font-semibold">
@@ -75,8 +92,17 @@ const handleNavigation = (path) => {
           >
             🐾 Donate Now
           </button>
-          <button className="xl:hidden text-slate-700 p-2 rounded-md hover:bg-slate-100" onClick={() => setSidebarOpen(true)}>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+          <button
+            className="xl:hidden text-slate-700 p-2 rounded-md hover:bg-slate-100"
+            onClick={() => setSidebarOpen(true)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="currentColor"
+            >
               <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
             </svg>
           </button>
@@ -89,12 +115,22 @@ const handleNavigation = (path) => {
           <div className="w-72 bg-white text-slate-800 flex flex-col h-full shadow-2xl overflow-y-auto">
             <div className="flex items-center justify-between p-4 border-b border-slate-200">
               <span className="font-extrabold text-xl text-emerald-600">Sharanam</span>
-              <button onClick={() => setSidebarOpen(false)} className="p-2 hover:bg-slate-100 rounded">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+              <button
+                onClick={() => setSidebarOpen(false)}
+                className="p-2 hover:bg-slate-100 rounded"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="currentColor"
+                >
                   <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                 </svg>
               </button>
             </div>
+
             <ul className="flex flex-col p-4 gap-1">
               {navLinks.map((link) => (
                 <li key={link.path}>
@@ -111,6 +147,7 @@ const handleNavigation = (path) => {
                 </li>
               ))}
             </ul>
+
             <div className="p-4 mt-auto border-t border-slate-200">
               <button
                 onClick={() => handleNavigation('/donate')}

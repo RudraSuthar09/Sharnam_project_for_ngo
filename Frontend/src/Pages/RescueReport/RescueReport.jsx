@@ -35,15 +35,18 @@ const RescueReport = () => {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await sendFormSubmissionEmail({
-      email: form.reporterEmail,
-      formName: "Rescue Report Form",
-      name: form.reporterName,
-    });
-    setSubmitted(true);
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  await sendFormSubmissionEmail({
+    name: form.reporterName,
+    email: form.reporterEmail,
+    phone: form.reporterPhone,
+    city: form.location,
+  });
+
+  setSubmitted(true);
+};
 
   const nextStep = () => setStep(s => Math.min(s + 1, 3));
   const prevStep = () => setStep(s => Math.max(s - 1, 1));

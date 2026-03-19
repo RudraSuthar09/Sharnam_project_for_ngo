@@ -17,6 +17,7 @@ import Stories from './Pages/Stories/Stories';
 import Contact from './Pages/Contact/Contact';
 import Adopt from './Pages/Adopt/Adopt';
 import About from './Pages/About/About';
+import InjuryAssistant from "./Pages/InjuryAssistant/InjuryAssistant";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -39,6 +40,9 @@ const App = () => {
         <Route path="/stories" element={<Stories />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/adopt" element={<Adopt />} />
+
+        {/* ✅ Injury Assistant Page (No Navbar/Footer, full-screen like your homepage) */}
+        <Route path="/injury-assistant" element={<InjuryAssistant />} />
 
         {/* Vet Locator Page */}
         <Route path="/vetlocator" element={<VetLocator />} />

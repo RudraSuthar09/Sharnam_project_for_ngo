@@ -34,11 +34,14 @@ const Volunteer = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     await sendFormSubmissionEmail({
-      email: form.email,
-      formName: "Volunteer Form",
       name: form.name,
+      email: form.email,
+      phone: form.phone,
+      city: form.city,
     });
+
     setSubmitted(true);
   };
 

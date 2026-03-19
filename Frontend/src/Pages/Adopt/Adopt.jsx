@@ -38,15 +38,20 @@ const Adopt = () => {
     (gender === "All" || a.gender === gender)
   );
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await sendFormSubmissionEmail({
-      email: form.email,
-      formName: "Adoption Form",
-      name: form.name,
-    });
-    setSubmitted(true);
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const animal = animals.find(a => a.id === applying);
+
+  await sendFormSubmissionEmail({
+    name: form.name,
+    email: form.email,
+    phone: form.phone,
+    city: form.address,   // using address as city
+  });
+
+  setSubmitted(true);
+};
 
   if (submitted) {
     const animal = animals.find(a => a.id === applying);

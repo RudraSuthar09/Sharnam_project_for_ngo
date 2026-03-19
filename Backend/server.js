@@ -13,6 +13,7 @@ import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import chatbotRouter from "./routes/chatbotRoutes.js";
 import notificationRouter from "./routes/notificationRoute.js";
+import injuryRouter from "./routes/injuryRoute.js";
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -29,6 +30,7 @@ app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
 app.use("/api/chatbot", chatbotRouter);
 app.use("/api/notifications", notificationRouter);
+app.use("/api/injury", injuryRouter);
 
 // Test route
 app.get("/", (req, res) => {
